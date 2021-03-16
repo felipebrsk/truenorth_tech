@@ -13,7 +13,7 @@
                             AI.</p>
                         <button
                             class="flex items-center mt-4 px-3 py-2 bg-green-500 text-white text-sm uppercase font-medium rounded hover:bg-green-500 focus:outline-none focus:bg-green-500">
-                            <span>Ver agora</span>
+                            <a class="text-white" href="{{ route('linha.rtx') }}">Ver agora</a>
                             <svg class="h-5 w-5 mx-2 transform animate-bounce" fill="none" stroke-linecap="round"
                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                 <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -32,7 +32,7 @@
                                 ultra rápidos para quem sonha em ter um PC ultra potente!</p>
                             <button
                                 class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
-                                <span>Ver agora</span>
+                                <a class="text-white" href="{{ route('linha.intel') }}">Ver agora</a>
                                 <svg class="h-5 w-5 mx-2 transform animate-bounce" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
@@ -50,7 +50,7 @@
                                 Confira os novos processadores Ryzen 3000.</p>
                             <button
                                 class="flex items-center mt-4 text-white text-sm uppercase font-medium rounded hover:underline focus:outline-none">
-                                <span>Ver agora</span>
+                                <a class="text-white" href="{{ route('linha.3000') }}">Ver agora</a>
                                 <svg class="h-5 w-5 mx-2 transform animate-bounce" fill="none" stroke-linecap="round"
                                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>

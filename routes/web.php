@@ -24,6 +24,9 @@ Route::get('/', function(){
 })->name('home');
 
 Route::get('/search', 'App\Http\Controllers\ShopController@search')->name('search');
+Route::get('/linha-3000', 'App\Http\Controllers\ShopController@linhaRyzen')->name('linha.3000');
+Route::get('/linha-10thGen', 'App\Http\Controllers\ShopController@linhaIntel')->name('linha.intel');
+Route::get('/linha-rtx-20', 'App\Http\Controllers\ShopController@linhaRtx')->name('linha.rtx');
 Route::get('/product/search', 'App\Http\Controllers\ProdutoController@search')->name('product.search');
 Route::resource('/shop', 'App\Http\Controllers\ShopController');
 

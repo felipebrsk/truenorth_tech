@@ -77,6 +77,54 @@ class ShopController extends Controller
     }
 
     /**
+     *  See all ryzen 3000 processors
+     *  
+     *  @return \Illuminate\Http\Request
+     */
+    public function linhaRyzen()
+    {
+        $keyWord = 'linha 3000';
+
+        $linhaRyzen = Produto::where('search_helper', 'LIKE', "%$keyWord%")->get();
+
+        return view('products.lines')->with([
+            'ryzen' => $linhaRyzen,
+        ]);
+    }
+
+    /**
+     *  See all intel 10th gen processors
+     *  
+     *  @return \Illuminate\Http\Request
+     */
+    public function linhaIntel()
+    {
+        $keyWord = '10th generation';
+
+        $linhaIntel = Produto::where('search_helper', 'LIKE', "%$keyWord%")->get();
+
+        return view('products.lines')->with([
+            'intel' => $linhaIntel,
+        ]);
+    }
+    
+    /**
+     *  See all intel 10th gen processors
+     *  
+     *  @return \Illuminate\Http\Request
+     */
+    public function linhaRtx()
+    {
+        $keyWord = '20 series';
+
+        $linhaRtx = Produto::where('search_helper', 'LIKE', "%$keyWord%")->get();
+
+        return view('products.lines')->with([
+            'rtx' => $linhaRtx,
+        ]);
+    }
+
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id

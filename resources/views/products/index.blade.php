@@ -237,7 +237,7 @@
                             </span>
                             <div class="inline-flex mt-2 xs:mt-0">
                                 @if ($search->previousPageUrl() != null)
-                                    <a href="{{ $search->previousPageUrl() }}"
+                                    <a href="{{ $search->appends(Request::all())->previousPageUrl() }}"
                                         class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
                                         Anterior
                                     </a>
@@ -245,7 +245,7 @@
 
                                 @endif
                                 @if ($search->nextPageUrl() != null)
-                                    <a href="{{ $search->nextPageUrl() }}"
+                                    <a href="{{ $search->appends(Request::all())->nextPageUrl() }}"
                                         class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
                                         Próxima
                                     </a>
