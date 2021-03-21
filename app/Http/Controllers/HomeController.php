@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Produto;
-use Illuminate\Http\Request;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -24,7 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Produto::all();
+        $products = Product::all();
         return view('home')->with([
             'products' => $products,
         ]);

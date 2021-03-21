@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoria;
-use App\Models\Produto;
-use App\Models\Tipo;
-use App\Models\Unidade;
+use App\Models\Category;
+use App\Models\Unity;
+use App\Models\Type;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +19,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $produtos = Produto::paginate(4);
+        $produtos = Product::paginate(4);
 
         return view('products.index', compact('produtos'));
     }
@@ -30,7 +30,7 @@ class ProdutoController extends Controller
         $paginate = $request->input('paginate');
         $stock = $request->input('stock');
 
-        $results = Produto::query();
+        $results = Product::query();
 
         if($request->has('q')){
             $results->where('search_helper', 'LIKE', "%$query%");
@@ -56,9 +56,9 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        $categorias = Categoria::all();
-        $unidades = Unidade::all();
-        $tipo = Tipo::all();
+        $categorias = Category::all();
+        $unidades = Unity::all();
+        $tipo = Type::all();
 
         return view('products.create')->with([
             'category' => $categorias,
@@ -86,7 +86,7 @@ class ProdutoController extends Controller
             'type_id' => 'required',
         ]);
 
-        $produto = new Produto;
+        $produto = new Product;
         $produto->product = $request->product;
         $produto->category_id = $request->category_id;
         $produto->unity_id = $request->unity_id;
@@ -105,7 +105,7 @@ class ProdutoController extends Controller
             \Image::make($image)->resize(800, 700)->save($location);
             $produto->image = $filename;
         }
-        
+
         $produto->save();
             
         return redirect()->route('product.index')->with('success_message', 'Produto cadastrado com sucesso.');
@@ -130,10 +130,10 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
-        $findProduct = Produto::find($id);
-        $category = Categoria::all();
-        $unity = Unidade::all();
-        $type = Tipo::all();
+        $findProduct = Product::find($id);
+        $category = Category::all();
+        $unity = Unity::all();
+        $type = Type::all();
 
         return view('products.create', compact('findProduct', 'category', 'unity', 'type'));
     }
@@ -147,7 +147,7 @@ class ProdutoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $updateProduct = Produto::find($id);
+        $updateProduct = Product::find($id);
 
         $updateProduct->product = $request->product;
         $updateProduct->price = $request->price;
@@ -189,7 +189,7 @@ class ProdutoController extends Controller
 
     public function excluir($id)
     {
-        $destroyProduct = Produto::find($id);
+        $destroyProduct = Product::find($id);
 
         if($destroyProduct){
             if($destroyProduct->image != null){

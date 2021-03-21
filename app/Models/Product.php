@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Produto extends Model
+class Product extends Model
 {
     protected $fillable = [
         'product',
@@ -48,7 +48,7 @@ class Produto extends Model
 
     public function categories()
     {
-        return $this->hasMany(Categoria::class);
+        return $this->hasMany(Category::class);
     }
 
     public function images()
@@ -58,12 +58,12 @@ class Produto extends Model
 
     public function type()
     {
-        return $this->hasMany(Tipo::class);
+        return $this->hasMany(Type::class);
     }
 
     public function unities()
     {
-        return $this->hasMany(Unidade::class);
+        return $this->hasMany(Unity::class);
     }
 
     public function scopeRandomProducts($query)

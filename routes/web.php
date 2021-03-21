@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\Produto;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -18,8 +18,8 @@ use Illuminate\Http\Request;
 Auth::routes();
 
 Route::get('/', function(){
-    $produtos = Produto::all();
-    $randomProducts = Produto::RandomProducts()->get();
+    $produtos = Product::all();
+    $randomProducts = Product::RandomProducts()->get();
     return view('home', compact('produtos', 'randomProducts'));
 })->name('home');
 

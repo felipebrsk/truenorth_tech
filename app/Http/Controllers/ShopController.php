@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Produto;
-use App\Models\Categoria;
+use App\Models\Product;
 
 class ShopController extends Controller
 {
@@ -15,7 +14,7 @@ class ShopController extends Controller
      */
     public function index(Request $request)
     {
-        $products = Produto::query();
+        $products = Product::query();
         $paginate = $request->input('paginate');
 
         if ($request->has('paginate')){
@@ -56,9 +55,9 @@ class ShopController extends Controller
      */
     public function show($id)
     {
-        $findProduct = Produto::find($id);
+        $findProduct = Product::find($id);
 
-        $similarProducts = Produto::RandomSimilars()
+        $similarProducts = Product::RandomSimilars()
         ->where('product', 'LIKE', $findProduct->product)
         ->orWhere('category_id', 'LIKE', $findProduct->category_id)
         ->orWhere('search_helper', 'LIKE', $findProduct->search_helper)
@@ -76,7 +75,7 @@ class ShopController extends Controller
     {
         $query = $request->input('query');
 
-        $results = Produto::where('product', 'LIKE', "%$query%")
+        $results = Product::where('product', 'LIKE', "%$query%")
                             ->orWhere('description', 'LIKE', "%$query%")
                             ->orWhere('search_helper', 'LIKE', "%$query%")
                             ->paginate(8);
@@ -93,7 +92,7 @@ class ShopController extends Controller
     {
         $keyWord = 'linha 3000';
 
-        $linhaRyzen = Produto::where('search_helper', 'LIKE', "%$keyWord%")->get();
+        $linhaRyzen = Product::where('search_helper', 'LIKE', "%$keyWord%")->get();
 
         return view('products.lines')->with([
             'ryzen' => $linhaRyzen,
@@ -109,7 +108,7 @@ class ShopController extends Controller
     {
         $keyWord = '10th generation';
 
-        $linhaIntel = Produto::where('search_helper', 'LIKE', "%$keyWord%")->get();
+        $linhaIntel = Product::where('search_helper', 'LIKE', "%$keyWord%")->get();
 
         return view('products.lines')->with([
             'intel' => $linhaIntel,
@@ -125,7 +124,7 @@ class ShopController extends Controller
     {
         $keyWord = '20 series';
 
-        $linhaRtx = Produto::where('search_helper', 'LIKE', "%$keyWord%")->get();
+        $linhaRtx = Product::where('search_helper', 'LIKE', "%$keyWord%")->get();
 
         return view('products.lines')->with([
             'rtx' => $linhaRtx,

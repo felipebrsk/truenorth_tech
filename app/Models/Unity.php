@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Categoria extends Model
+class Unity extends Model
 {
     protected $fillable = [
-        'category'
+        'unity_type',
     ];
 
     use HasFactory;
 
     public function product()
     {
-        return $this->belongsTo(Produto::class);
+        return $this->belongsTo(Product::class);
     }
 }
