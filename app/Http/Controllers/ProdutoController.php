@@ -26,15 +26,27 @@ class ProdutoController extends Controller
 
     public function search(Request $request)
     {
-        
         $query = $request->input('q');
+        $paginate = $request->input('paginate');
+        $stock = $request->input('stock');
 
-        $search = Produto::where('product', 'LIKE', "%$query%")
-        ->orWhere('search_helper', 'LIKE', "%$query%")
-        ->orWhere('description', 'LIKE', "%$query%")
-        ->paginate(4);
+        $results = Produto::query();
 
-        return view('products.index', compact('search'));
+        if($request->has('q')){
+            $results->where('search_helper', 'LIKE', "%$query%");
+        }
+
+        if($request->has('stock')){
+            $results->where('estoque', $stock);
+        }
+
+        if($request->has('paginate')){
+            $productQuery = $results->paginate($paginate);
+        }else{
+            $productQuery = $results->paginate(5);
+        }
+
+        return view('products.index', compact('productQuery'));
     }
 
     /**
@@ -47,6 +59,7 @@ class ProdutoController extends Controller
         $categorias = Categoria::all();
         $unidades = Unidade::all();
         $tipo = Tipo::all();
+
         return view('products.create')->with([
             'category' => $categorias,
             'unity' => $unidades,
@@ -80,9 +93,11 @@ class ProdutoController extends Controller
         $produto->type_id = $request->type_id;
         $produto->price = $request->price;
         $produto->best_seller = 0;
+        $produto->new = 0;
         $produto->current_inventory = $request->current_inventory;
         $produto->search_helper = $request->search_helper;
         $produto->description = $request->description;
+        $produto->estoque = $request->stock;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -90,9 +105,9 @@ class ProdutoController extends Controller
             \Image::make($image)->resize(800, 700)->save($location);
             $produto->image = $filename;
         }
+        
         $produto->save();
             
-
         return redirect()->route('product.index')->with('success_message', 'Produto cadastrado com sucesso.');
     }
 
@@ -138,9 +153,13 @@ class ProdutoController extends Controller
         $updateProduct->price = $request->price;
         $updateProduct->current_inventory = $request->current_inventory;
         $updateProduct->description = $request->description;
+        $updateProduct->best_seller = $request->best_seller;
         $updateProduct->category_id = $request->category_id;
+        $updateProduct->search_helper = $request->search_helper;
         $updateProduct->unity_id = $request->unity_id;
         $updateProduct->type_id = $request->type_id;
+        $updateProduct->estoque = $request->stock;
+        $updateProduct->new = $request->new;
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $filename = time() . '.' . $image->getClientOriginalExtension();

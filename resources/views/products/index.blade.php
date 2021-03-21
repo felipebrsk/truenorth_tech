@@ -36,9 +36,14 @@
                 <div class="flex justify-between">
                     <div class="flex flex-row mb-1 sm:mb-0">
                         <div class="relative">
-                            <select
+                            <form action="{{ route('product.search') }}" method="GET" class="h-full" id="filter">
+                            <select name="paginate"
                                 class="appearance-none h-full rounded-l border block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
-                                <option>4</option>
+                                <option value="5" selected>5</option>
+                                <option value="10">10</option>
+                                <option value="15">15</option>
+                                <option value="20">20</option>
+                                <option value="25">25</option>
                             </select>
                             <div
                                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -50,11 +55,11 @@
                             </div>
                         </div>
                         <div class="relative">
-                            <select
+                            <select name="stock"
                                 class="appearance-none h-full rounded-r border-t sm:rounded-r-none sm:border-r-0 border-r border-b block w-full bg-white border-gray-400 text-gray-700 py-2 px-4 pr-8 leading-tight focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                                <option>All</option>
-                                <option>Active</option>
-                                <option>Inactive</option>
+                                <option disabled selected>Todos</option>
+                                <option value="1">Em estoque</option>
+                                <option value="0">Em falta</option>
                             </select>
                             <div
                                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
@@ -73,19 +78,25 @@
                                     </path>
                                 </svg>
                             </span>
-                            <form action="{{ route('product.search') }}" method="GET" class="h-full">
-                                <input placeholder="Search" name="q" value="{{ request()->input('q') }}"
-                                    class="appearance-none h-full rounded-r rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+                                <input placeholder="Pesquisar..." name="q" value="{{ request()->input('q') }}"
+                                    class="appearance-none h-full rounded-l sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-white text-sm placeholder-gray-400 text-gray-700 focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+                            </form>
+                        </div>
+                        <div class="block relative">
+                                <button type="submit" form="filter"
+                                    class="appearance-none h-full rounded-r text-white sm:rounded-l-none border border-gray-400 border-b block pl-8 pr-6 py-2 w-full bg-gray-600 text-sm placeholder-gray-400 hover:bg-gray-700 focus:outline-none">
+                                    Filtrar
+                                </button>
                             </form>
                         </div>
                     </div>
-                    <div>
+                    <div class="sm:flex sm:flex-wrap sm:ml-4">
                         <a href="{{ route('home') }}"
-                            class="bg-gray-900 rounded px-4 text-gray-200 py-3 text-xs font-semibold hover:bg-gray-800 mr-4">
+                            class="bg-gray-900 rounded px-4 text-gray-200 py-3 text-xs font-semibold hover:bg-gray-800 sm:mr-4">
                             Voltar para home
                         </a>
                         <a href="{{ route('product.create') }}"
-                            class="bg-gray-900 rounded px-4 text-gray-200 py-3 text-xs font-semibold hover:bg-gray-800">
+                            class="bg-gray-900 rounded px-4 text-gray-200 py-3 text-xs font-semibold hover:bg-gray-800 mt-px">
                             Cadastrar produto
                         </a>
                     </div>
@@ -106,6 +117,10 @@
                                 </th>
                                 <th
                                     class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Estoque
+                                </th>
+                                <th
+                                    class="px-5 py-3 border-b-2 border-gray-200 bg-gray-100 text-left text-xs font-semibold text-gray-600 uppercase tracking-wider">
                                     Preço
                                 </th>
                                 <th
@@ -119,8 +134,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @if (isset($search))
-                                @foreach ($search as $products)
+                            @if (isset($productQuery))
+                                @foreach ($productQuery as $products)
                                     <tr>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">{{ $products->id }}</p>
@@ -132,8 +147,8 @@
                                                         src="{{ asset('/images/' . $products->image) }}"
                                                         alt="produto" />
                                                 </div>
-                                                <div class="ml-3">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
+                                                <div class="ml-3 w-64">
+                                                    <p class="text-gray-900 break-words">
                                                         {{ $products->product }}
                                                     </p>
                                                 </div>
@@ -141,11 +156,16 @@
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $products->current_inventory }}
+                                            </p>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
                                                 R${{ $products->price }}
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            @if ($products->current_inventory > 0)
+                                            @if ($products->estoque == 1)
                                                 <span
                                                     class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                                     <span aria-hidden
@@ -161,7 +181,7 @@
                                                 </span>
                                             @endif
                                         </td>
-                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm md:flex-none flex-wrap md:mt-4 mt-4">
                                             <a href="{{ route('shop.show', $products->id) }}"
                                                 class="font-bold py-1 px-3 rounded text-xs bg-blue-400 hover:bg-blue-500">Ver</a>
                                             <a href="{{ route('product.edit', $products->id) }}"
@@ -185,8 +205,8 @@
                                                         src="{{ asset('/images/' . $products->image) }}"
                                                         alt="produto" />
                                                 </div>
-                                                <div class="ml-3">
-                                                    <p class="text-gray-900 whitespace-no-wrap">
+                                                <div class="ml-3 w-64">
+                                                    <p class="text-gray-900 break-words">
                                                         {{ $products->product }}
                                                     </p>
                                                 </div>
@@ -194,11 +214,16 @@
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                             <p class="text-gray-900 whitespace-no-wrap">
+                                                {{ $products->current_inventory }}
+                                            </p>
+                                        </td>
+                                        <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                            <p class="text-gray-900 whitespace-no-wrap">
                                                 R${{ $products->price }}
                                             </p>
                                         </td>
                                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                            @if ($products->current_inventory > 0)
+                                            @if ($products->estoque == 1)
                                                 <span
                                                     class="relative inline-block px-3 py-1 font-semibold text-green-900 leading-tight">
                                                     <span aria-hidden
@@ -228,24 +253,24 @@
                             @endif
                         </tbody>
                     </table>
-                    @if (isset($search))
+                    @if (isset($productQuery))
                         <div
                             class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
                             <span class="text-xs xs:text-sm text-gray-900">
-                                Mostrando 1 a {{ $search->count() }} de
-                                {{ $search->total() }} resultados
+                                Mostrando {{ $productQuery->count() }} de
+                                {{ $productQuery->total() }} resultados
                             </span>
                             <div class="inline-flex mt-2 xs:mt-0">
-                                @if ($search->previousPageUrl() != null)
-                                    <a href="{{ $search->appends(Request::all())->previousPageUrl() }}"
+                                @if ($productQuery->previousPageUrl() != null)
+                                    <a href="{{ $productQuery->appends(Request::all())->previousPageUrl() }}"
                                         class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
                                         Anterior
                                     </a>
                                 @else
 
                                 @endif
-                                @if ($search->nextPageUrl() != null)
-                                    <a href="{{ $search->appends(Request::all())->nextPageUrl() }}"
+                                @if ($productQuery->nextPageUrl() != null)
+                                    <a href="{{ $productQuery->appends(Request::all())->nextPageUrl() }}"
                                         class="text-sm bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-r">
                                         Próxima
                                     </a>
@@ -258,7 +283,7 @@
                         <div
                             class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
                             <span class="text-xs xs:text-sm text-gray-900">
-                                Mostrando 1 a {{ $produtos->count() }} de
+                                Mostrando {{ $produtos->count() }} de
                                 {{ $produtos->total() }} resultados
                             </span>
                             <div class="inline-flex mt-2 xs:mt-0">

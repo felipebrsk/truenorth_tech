@@ -13,9 +13,18 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $products = Produto::query();
+        $paginate = $request->input('paginate');
+
+        if ($request->has('paginate')){
+            $productsQuery = $products->paginate($paginate);
+        }else{
+            $productsQuery = $products->paginate(20);
+        }
+
+        return view('all-products')->with('products', $productsQuery);
     }
 
     /**
@@ -53,7 +62,6 @@ class ShopController extends Controller
         ->where('product', 'LIKE', $findProduct->product)
         ->orWhere('category_id', 'LIKE', $findProduct->category_id)
         ->orWhere('search_helper', 'LIKE', $findProduct->search_helper)
-        ->orWhere('description', 'LIKE', $findProduct->description)
         ->get();
         
         return view('products.show', compact('findProduct', 'similarProducts'));

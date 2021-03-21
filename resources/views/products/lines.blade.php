@@ -21,7 +21,7 @@
                             <form action="{{ route('cart.store') }}" method="POST">
                                 @csrf
                                 <div
-                                    class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden transform hover:scale-105">
+                                    class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden transform hover:scale-105 h-full">
                                     <div class="flex items-end justify-end h-56 w-full bg-cover"
                                         style="background-image: url('{{ asset('/images/' . $product->image) }}')">
                                         <input type="hidden" name="id" value="{{ $product->id }}">
@@ -71,7 +71,7 @@
                             <form action="{{ route('cart.store') }}" method="POST">
                                 @csrf
                                 <div
-                                    class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden transform hover:scale-105">
+                                    class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden transform hover:scale-105 h-full">
                                     <div class="flex items-end justify-end h-56 w-full bg-cover"
                                         style="background-image: url('{{ asset('/images/' . $product->image) }}')">
                                         <input type="hidden" name="id" value="{{ $product->id }}">

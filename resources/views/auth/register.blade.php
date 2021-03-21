@@ -51,21 +51,21 @@
                         <div class="text-sm font-bold text-gray-700 tracking-wide">Usuário</div>
                         <div class="relative text-gray-600 focus-within:text-gray-400">
                             <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                                <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                                <button type="button" class="p-1 focus:outline-none focus:shadow-outline">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                         <path
-                                            d="M20.822 18.096c-3.439-.794-6.64-1.49-5.09-4.418 4.72-8.912 1.251-13.678-3.732-13.678-5.082 0-8.464 4.949-3.732 13.678 1.597 2.945-1.725 3.641-5.09 4.418-3.073.71-3.188 2.236-3.178 4.904l.004 1h23.99l.004-.969c.012-2.688-.092-4.222-3.176-4.935z" />
+                                            d="M23.995 24h-1.995c0-3.104.119-3.55-1.761-3.986-2.877-.664-5.594-1.291-6.584-3.458-.361-.791-.601-2.095.31-3.814 2.042-3.857 2.554-7.165 1.403-9.076-1.341-2.229-5.413-2.241-6.766.034-1.154 1.937-.635 5.227 1.424 9.025.93 1.712.697 3.02.338 3.815-.982 2.178-3.675 2.799-6.525 3.456-1.964.454-1.839.87-1.839 4.004h-1.995l-.005-1.241c0-2.52.199-3.975 3.178-4.663 3.365-.777 6.688-1.473 5.09-4.418-4.733-8.729-1.35-13.678 3.732-13.678 4.983 0 8.451 4.766 3.732 13.678-1.551 2.928 1.65 3.624 5.09 4.418 2.979.688 3.178 2.143 3.178 4.663l-.005 1.241zm-13.478-6l.91 2h1.164l.92-2h-2.994zm2.995 6l-.704-3h-1.615l-.704 3h3.023z" />
                                     </svg>
                                 </button>
                             </span>
                             <input
                                 class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 pl-10"
-                                type="text" placeholder="Sam Smith" autocomplete="off" name="name" required>
+                                type="text" placeholder="Sam Smith" autocomplete="off" name="name" required />
                         </div>
                         <div class="text-sm font-bold text-gray-700 tracking-wide mt-8">Endereço de e-mail</div>
                         <div class="relative text-gray-600 focus-within:text-gray-400">
                             <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                                <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                                <button type="button" class="p-1 focus:outline-none focus:shadow-outline">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                                         <path
                                             d="M0 3v18h24v-18h-24zm6.623 7.929l-4.623 5.712v-9.458l4.623 3.746zm-4.141-5.929h19.035l-9.517 7.713-9.518-7.713zm5.694 7.188l3.824 3.099 3.83-3.104 5.612 6.817h-18.779l5.513-6.812zm9.208-1.264l4.616-3.741v9.348l-4.616-5.607z" />
@@ -74,7 +74,7 @@
                             </span>
                             <input
                                 class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 pl-10"
-                                type="email" placeholder="sam@gmail.com" autocomplete="off" name="email" required>
+                                type="email" placeholder="sam@gmail.com" autocomplete="off" name="email" required />
                         </div>
                         <div class="mt-8 relative text-gray-600 focus-within:text-gray-400">
                             <div class="flex justify-between items-center">
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                             <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                                <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                                <button type="button" class="p-1 focus:outline-none focus:shadow-outline">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         class="mt-5">
                                         <path
@@ -93,7 +93,7 @@
                             </span>
                             <input
                                 class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 pl-10"
-                                type="password" placeholder="Insira uma senha" name="password" required>
+                                type="password" placeholder="Insira uma senha" name="password" required />
                         </div>
                         <div class="mt-8 relative text-gray-600 focus-within:text-gray-400">
                             <div class="flex justify-between items-center">
@@ -102,7 +102,7 @@
                                 </div>
                             </div>
                             <span class="absolute inset-y-0 left-0 flex items-center pl-2">
-                                <button type="submit" class="p-1 focus:outline-none focus:shadow-outline">
+                                <button type="button" class="p-1 focus:outline-none focus:shadow-outline">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         class="mt-5">
                                         <path
@@ -112,7 +112,8 @@
                             </span>
                             <input
                                 class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 pl-10"
-                                type="password" placeholder="Confirme sua senha" name="password_confirmation" required>
+                                type="password" placeholder="Confirme sua senha" name="password_confirmation"
+                                required />
                         </div>
                         <div class="mt-10">
                             <button class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide

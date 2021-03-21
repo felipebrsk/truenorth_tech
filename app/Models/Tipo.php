@@ -15,6 +15,6 @@ class Tipo extends Model
 
     public function product()
     {
-        return $this->belongsTo('App\Models\Produto');
+        return $this->belongsTo(Produto::class);
     }
 }

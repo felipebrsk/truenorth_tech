@@ -169,6 +169,26 @@
                                                         </button>
                                                     </form>
                                                 @endforeach
+                                                <div class="mt-8">
+                                                    <form class="flex items-center justify-center">
+                                                        <input
+                                                            class="form-input w-48 focus:outline-none text-black focus:ring-1 focus:ring-gray-600 rounded"
+                                                            type="text" placeholder="Código">
+                                                        <button
+                                                            class="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                                            <span>Aplicar</span>
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                                <a
+                                                    class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                                    <span>Checkout</span>
+                                                    <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round"
+                                                        stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
+                                                        stroke="currentColor">
+                                                        <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                                    </svg>
+                                                </a>
                                             @else
                                                 <div class="flex justify-between mt-6">
                                                     <div class="flex">
@@ -178,26 +198,6 @@
                                                     </div>
                                                 </div>
                                             @endif
-                                            <div class="mt-8">
-                                                <form class="flex items-center justify-center">
-                                                    <input
-                                                        class="form-input w-48 focus:outline-none text-black focus:ring-1 focus:ring-gray-600 rounded"
-                                                        type="text" placeholder="Código">
-                                                    <button
-                                                        class="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                                                        <span>Aplicar</span>
-                                                    </button>
-                                                </form>
-                                            </div>
-                                            <a
-                                                class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                                                <span>Checkout</span>
-                                                <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round"
-                                                    stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
-                                                    stroke="currentColor">
-                                                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                                </svg>
-                                            </a>
                                         </div>
                                     </div>
                                     <a href="#"
@@ -306,6 +306,25 @@
                                             </button>
                                         </form>
                                     @endforeach
+                                    <div class="mt-8">
+                                        <form class="flex items-center justify-center">
+                                            <input
+                                                class="form-input w-48 focus:outline-none text-black focus:ring-1 focus:ring-gray-600 rounded"
+                                                type="text" placeholder="Código">
+                                            <button
+                                                class="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                                <span>Aplicar</span>
+                                            </button>
+                                        </form>
+                                    </div>
+                                    <a
+                                        class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
+                                        <span>Checkout</span>
+                                        <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                        </svg>
+                                    </a>
                                 @else
                                     <div class="flex justify-between mt-6">
                                         <div class="flex">
@@ -315,25 +334,6 @@
                                         </div>
                                     </div>
                                 @endif
-                                <div class="mt-8">
-                                    <form class="flex items-center justify-center">
-                                        <input
-                                            class="form-input w-48 focus:outline-none text-black focus:ring-1 focus:ring-gray-600 rounded"
-                                            type="text" placeholder="Código">
-                                        <button
-                                            class="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                                            <span>Aplicar</span>
-                                        </button>
-                                    </form>
-                                </div>
-                                <a
-                                    class="flex items-center justify-center mt-4 px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
-                                    <span>Checkout</span>
-                                    <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                    </svg>
-                                </a>
                             </div>
                         </div>
                         <a href="#"
@@ -364,9 +364,9 @@
                         TrueNorth Technology, a empresa que fala a sua língua.
                     </p>
                     <div class="flex justify-center lg:justify-start mb-6 mt-6">
-                        <a href="#"
-                            class="bg-gray-900 rounded px-4 text-gray-200 py-3 text-xs font-semibold hover:bg-gray-800">
-                            Link 1
+                        <a href="{{ route('shop.index') }}"
+                            class="bg-gray-900 rounded px-4 text-white py-3 text-xs font-semibold hover:bg-gray-800" style="color: white;">
+                            Shop
                         </a>
                         <a href="#" class="mx-2 px-4 py-3 bg-gray-300 text-gray-900 rounded text-xs hover:bg-gray-400">
                             Link 2

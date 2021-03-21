@@ -68,7 +68,7 @@
                             <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
                                 <select class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                                     name="category_id">
-                                    <option aria-checked="true" hidden>Selecione uma categoria</option>
+                                    <option aria-checked="true" selected disabled>Selecione uma categoria</option>
                                     @foreach ($category as $categ)
                                         <option value="{{ $categ->id }}" @if (isset($findProduct)) {{ $categ->id == $findProduct->category_id ? 'selected' : '' }} @endif>{{ $categ->category }}</option>
                                     @endforeach
@@ -79,7 +79,7 @@
                             <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
                                 <select class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                                     name="unity_id">
-                                    <option aria-checked="true" hidden>Selecione o tipo de unidade</option>
+                                    <option aria-checked="true" selected disabled>Selecione o tipo de unidade</option>
                                     @foreach ($unity as $unit)
                                         <option value="{{ $unit->id }}" @if (isset($findProduct)) {{ $unit->id == $findProduct->unity_id ? 'selected' : '' }} @endif>{{ $unit->unity_type }}</option>
                                     @endforeach
@@ -90,10 +90,30 @@
                             <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
                                 <select class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
                                     name="type_id">
-                                    <option aria-checked="true" hidden>Selecione o tipo do produto</option>
+                                    <option aria-checked="true" selected disabled>Selecione o tipo do produto</option>
                                     @foreach ($type as $tipo)
                                         <option value="{{ $tipo->id }}" @if (isset($findProduct)) {{ $tipo->id == $findProduct->type_id ? 'selected' : '' }} @endif>{{ $tipo->type }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                        </div>
+                        <div class="w-full flex-1 mx-2">
+                            <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
+                                <select class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                                    name="best_seller">
+                                    <option aria-checked="true" selected disabled>Setar como mais vendido</option>
+                                    <option value="1" @if (isset($findProduct)) {{ $findProduct->best_seller ? 'selected' : '' }} @endif>Mais vendido</option>
+                                    <option value="0">Remover</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="w-full flex-1 mx-2">
+                            <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
+                                <select class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
+                                    name="new">
+                                    <option aria-checked="true" selected disabled>Setar como lançamento</option>
+                                    <option value="1" @if (isset($findProduct)) {{ $findProduct->new ? 'selected' : '' }} @endif>Lançamento</option>
+                                    <option value="0">Remover</option>
                                 </select>
                             </div>
                         </div>
@@ -105,21 +125,29 @@
                                     <span class="mt-1 pl-1 text-gray-400">R$</span>
                                     <input placeholder="Preço" name="price" type="number" step="0.01"
                                         value="{{ isset($findProduct->price) ? $findProduct->price : old('price') }}"
-                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800 ">
+                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800"/>
                                 </div>
                             </div>
                             <div class="w-full flex-1 mx-2">
                                 <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
                                     <input placeholder="Quantidade em estoque" name="current_inventory" type="number"
                                         value="{{ isset($findProduct->current_inventory) ? $findProduct->current_inventory : old('current_inventory') }}"
-                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800 ">
+                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800"/>
                                 </div>
                             </div>
                             <div class="w-full flex-1 mx-2">
                                 <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
                                     <input placeholder="Palavras chave para pesquisa (opcional)" name="search_helper"
                                         value="{{ isset($findProduct->search_helper) ? $findProduct->search_helper : old('search_helper') }}"
-                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800 ">
+                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800"/>
+                                </div>
+                            </div>
+                            <div class="w-full flex-1 mx-2">
+                                <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
+                                    <select name="stock" class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
+                                        <option value="1">Em estoque</option>
+                                        <option value="0">Em falta</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +156,7 @@
                                 <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
                                     <input placeholder="Descrição do produto" name="description" type="text"
                                         value="{{ isset($findProduct->description) ? $findProduct->description : old('description') }}"
-                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800 ">
+                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800"/>
                                 </div>
                             </div>
                         </div>
