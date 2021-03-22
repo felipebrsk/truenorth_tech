@@ -53,9 +53,11 @@ class ShopController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Product $product)
     {
         $findProduct = Product::find($id);
+
+        $multipleImages = $product->load('images')->get();
 
         $similarProducts = Product::RandomSimilars()
         ->where('product', 'LIKE', $findProduct->product)
@@ -63,7 +65,7 @@ class ShopController extends Controller
         ->orWhere('search_helper', 'LIKE', $findProduct->search_helper)
         ->get();
         
-        return view('products.show', compact('findProduct', 'similarProducts'));
+        return view('products.show', compact('findProduct', 'similarProducts', 'multipleImages'));
     }
 
     /**

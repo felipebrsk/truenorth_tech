@@ -16,6 +16,7 @@ class ImageTest extends TestCase
 
         $expected = [
             'image',
+            'product_id',
         ];
 
         $arrayCompare = array_diff($expected, $user->getFillable());

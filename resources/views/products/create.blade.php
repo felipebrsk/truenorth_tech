@@ -109,10 +109,10 @@
                         </div>
                         <div class="w-full flex-1 mx-2">
                             <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                                <select class="p-1 px-2 appearance-none outline-none w-full text-gray-800"
-                                    name="new">
+                                <select class="p-1 px-2 appearance-none outline-none w-full text-gray-800" name="new">
                                     <option aria-checked="true" selected disabled>Setar como lançamento</option>
-                                    <option value="1" @if (isset($findProduct)) {{ $findProduct->new ? 'selected' : '' }} @endif>Lançamento</option>
+                                    <option value="1" @if (isset($findProduct)) {{ $findProduct->new ? 'selected' : '' }} @endif>
+                                        Lançamento</option>
                                     <option value="0">Remover</option>
                                 </select>
                             </div>
@@ -125,26 +125,27 @@
                                     <span class="mt-1 pl-1 text-gray-400">R$</span>
                                     <input placeholder="Preço" name="price" type="number" step="0.01"
                                         value="{{ isset($findProduct->price) ? $findProduct->price : old('price') }}"
-                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800"/>
+                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800" />
                                 </div>
                             </div>
                             <div class="w-full flex-1 mx-2">
                                 <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
                                     <input placeholder="Quantidade em estoque" name="current_inventory" type="number"
                                         value="{{ isset($findProduct->current_inventory) ? $findProduct->current_inventory : old('current_inventory') }}"
-                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800"/>
+                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800" />
                                 </div>
                             </div>
                             <div class="w-full flex-1 mx-2">
                                 <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
                                     <input placeholder="Palavras chave para pesquisa (opcional)" name="search_helper"
                                         value="{{ isset($findProduct->search_helper) ? $findProduct->search_helper : old('search_helper') }}"
-                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800"/>
+                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800" />
                                 </div>
                             </div>
                             <div class="w-full flex-1 mx-2">
                                 <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
-                                    <select name="stock" class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
+                                    <select name="stock"
+                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800">
                                         <option value="1">Em estoque</option>
                                         <option value="0">Em falta</option>
                                     </select>
@@ -156,7 +157,7 @@
                                 <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
                                     <input placeholder="Descrição do produto" name="description" type="text"
                                         value="{{ isset($findProduct->description) ? $findProduct->description : old('description') }}"
-                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800"/>
+                                        class="p-1 px-2 appearance-none outline-none w-full text-gray-800" />
                                 </div>
                             </div>
                         </div>
@@ -176,6 +177,28 @@
             </div>
             </form>
             </form>
+            @if (isset($findProduct))
+                <hr class="mt-4 mb-4" />
+                <label class="font-bold">Imagens do produto</label>
+                <form action="{{ route('images.store') }}" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="m-2">
+                        <div class="w-full flex-1">
+                            <div class="my-2 p-1 bg-white flex border border-gray-200 rounded">
+                                <input placeholder="Descrição do produto" name="images[]" type="file" accept="image/*"
+                                    class="p-1 px-2 appearance-none outline-none w-full text-gray-800" multiple />
+                                <input type="hidden" name="product_id" value="{{ $findProduct->id }}">
+                            </div>
+                        </div>
+                    </div>
+                    <button class="text-sm  mx-2 w-32  focus:outline-none flex justify-center px-4 py-2 rounded font-bold cursor-pointer 
+            hover:bg-green-700 hover:text-green-100 
+            bg-green-100 
+            text-green-700 
+            border duration-200 ease-in-out 
+            border-green-600 transition">Salvar</button>
+                </form>
+            @endif
         </div>
     </div>
 </body>

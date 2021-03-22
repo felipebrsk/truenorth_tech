@@ -14,7 +14,7 @@ class LoginTest extends DuskTestCase
     public function check_if_login_function_is_working_fine()
     {
         $this->browse(function (Browser $browser) {
-            $browser->visit('/login')
+            $browser->visitRoute('login')
                     ->type('email', 'teste@teste.com.br')
                     ->type('password', 'teste1234')
                     ->press('Log In')

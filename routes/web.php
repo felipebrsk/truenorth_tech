@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Models\Product;
@@ -39,6 +40,7 @@ Route::group(['prefix' => 'admin'], function () {
 Route::middleware(["admin.user"])->group(function (){
     Route::resource('/product', ProductController::class);
     Route::get('/product/excluir/{id}', [ProductController::class, 'excluir'])->name('product.excluir');
+    Route::post('/product/images', [ImageController::class, 'store'])->name('images.store');
 });
 
 Route::middleware(['auth'])->group(function () {

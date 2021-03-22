@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductStoreRequest;
 use App\Models\Category;
 use App\Models\Unity;
 use App\Models\Type;
@@ -73,19 +74,8 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ProductStoreRequest $request)
     {
-        $request->validate([
-            'image' => 'required',
-            'product' => 'required|unique:produtos|min:5',
-            'price' => 'required',
-            'current_inventory' => 'required',
-            'description' => 'required|min:15',
-            'category_id' => 'required',
-            'unity_id' => 'required',
-            'type_id' => 'required',
-        ]);
-
         $produto = new Product;
         $produto->product = $request->product;
         $produto->category_id = $request->category_id;

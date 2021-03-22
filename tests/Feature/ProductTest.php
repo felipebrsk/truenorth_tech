@@ -11,7 +11,7 @@ class ProductTest extends TestCase
     /**
      * @test
      */
-    public function only_admins_can_see_products_list()
+    public function check_if_only_admins_can_see_product_route()
     {
         $response = $this->get('/product')->assertRedirect('/admin/login');
     }
