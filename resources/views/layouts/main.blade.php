@@ -116,7 +116,7 @@
                                                                         action="{{ route('cart.remove', $products->rowId) }}"
                                                                         method="POST">
                                                                         @csrf
-                                                                        {{ method_field('PATCH') }}
+                                                                        @method('PATCH')
                                                                         <button
                                                                             class="text-gray-500 focus:outline-none focus:text-gray-600">
                                                                             <svg class="h-5 w-5" fill="none"
@@ -136,7 +136,7 @@
                                                                         action="{{ route('cart.update', $products->rowId) }}"
                                                                         method="POST">
                                                                         @csrf
-                                                                        {{ method_field('PATCH') }}
+                                                                        @method('PATCH')
                                                                         <button
                                                                             class="text-gray-500 focus:outline-none focus:text-gray-600">
                                                                             <svg class="h-5 w-5" fill="none"
@@ -159,7 +159,7 @@
                                                     <form action="{{ route('cart.destroy', $products->rowId) }}"
                                                         method="post">
                                                         @csrf
-                                                        {{ method_field('DELETE') }}
+                                                        @method('DELETE')
                                                         <button class="text-gray-600 focus:outline-none inline-flex">
                                                             <svg class="h-5 w-5" fill="none" stroke-linecap="round"
                                                                 stroke-linejoin="round" stroke-width="2"
@@ -173,7 +173,7 @@
                                                     <form class="flex items-center justify-center">
                                                         <input
                                                             class="form-input w-48 focus:outline-none text-black focus:ring-1 focus:ring-gray-600 rounded"
-                                                            type="text" placeholder="Código">
+                                                            type="text" placeholder="Cupom de desconto">
                                                         <button
                                                             class="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                                                             <span>Aplicar</span>
@@ -261,7 +261,7 @@
                                                         <form action="{{ route('cart.remove', $products->rowId) }}"
                                                             method="POST">
                                                             @csrf
-                                                            {{ method_field('PATCH') }}
+                                                            @method('PATCH')
                                                             <button
                                                                 class="text-gray-500 focus:outline-none focus:text-gray-600">
                                                                 <svg class="h-5 w-5" fill="none" stroke-linecap="round"
@@ -276,7 +276,7 @@
                                                         <form action="{{ route('cart.update', $products->rowId) }}"
                                                             method="POST">
                                                             @csrf
-                                                            {{ method_field('PATCH') }}
+                                                            @method('PATCH')
                                                             <button
                                                                 class="text-gray-500 focus:outline-none focus:text-gray-600">
                                                                 <svg class="h-5 w-5" fill="none" stroke-linecap="round"
@@ -296,7 +296,7 @@
                                         </div>
                                         <form action="{{ route('cart.destroy', $products->rowId) }}" method="post">
                                             @csrf
-                                            {{ method_field('DELETE') }}
+                                            @method('DELETE')
                                             <button class="text-gray-600 focus:outline-none inline-flex">
                                                 <svg class="h-5 w-5" fill="none" stroke-linecap="round"
                                                     stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -310,7 +310,7 @@
                                         <form class="flex items-center justify-center">
                                             <input
                                                 class="form-input w-48 focus:outline-none text-black focus:ring-1 focus:ring-gray-600 rounded"
-                                                type="text" placeholder="Código">
+                                                type="text" placeholder="Cupom de desconto">
                                             <button
                                                 class="ml-3 flex items-center px-3 py-2 bg-blue-600 text-white text-sm uppercase font-medium rounded hover:bg-blue-500 focus:outline-none focus:bg-blue-500">
                                                 <span>Aplicar</span>

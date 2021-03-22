@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Produto;
+use App\Models\Product;
 
 class CartController extends Controller
 {
@@ -33,7 +33,7 @@ class CartController extends Controller
             return back()->withErrors('O item já se encontra no seu carrinho.');
         }
 
-        \Cart::add($request->id, $request->product, 1, $request->price)->associate('App\Models\Produto');
+        \Cart::add($request->id, $request->product, 1, $request->price)->associate(Product::class);
 
         return back()->with('success_message', $request->product . ' foi adicionado ao carrinho.');
     }
@@ -47,7 +47,7 @@ class CartController extends Controller
     public function update(Request $request, $rowId)
     {
         $row = \Cart::get($rowId);
-        $produtos = Produto::find($row->id);
+        $produtos = Product::find($row->id);
         
         if($row->qty >= $produtos->current_inventory){
             return back()->withErrors('Infelizmente não temos essa quantidade em estoque.');
