@@ -59,8 +59,8 @@
                                 </button>
                             </span>
                             <input
-                                class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 pl-10"
-                                type="email" placeholder="sam@gmail.com" autocomplete="off" name="email" required>
+                                class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-indigo-500 pl-10 name"
+                                type="email" placeholder="sam@gmail.com" autocomplete="off" name="email" value="{{ old('email') }}" required>
                         </div>
                         <div class="mt-8 relative text-gray-600 focus-within:text-gray-400">
                             <div class="flex justify-between items-center">
@@ -92,7 +92,7 @@
                         <div class="mt-10">
                             <button class="bg-indigo-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                                 font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-indigo-600
-                                shadow-lg">
+                                shadow-lg" dusk="login">
                                 Log In
                             </button>
                         </div>

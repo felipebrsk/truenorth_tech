@@ -50,7 +50,7 @@
         @csrf
     </form>
     <header class="w-full">
-        <nav class="bg-gray-50 shadow-lg">
+        <nav class="bg-gray-50 shadow-lg navbar">
             <div class="md:flex items-center justify-between py-2 px-8 md:px-12">
                 <div class="flex justify-between items-center">
                     <div class="text-2x1 font-bold text-gray-800 md:text-3x1">
