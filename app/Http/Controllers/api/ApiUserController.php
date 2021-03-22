@@ -33,7 +33,7 @@ class ApiUserController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return response()->json(['success', 'Olá, ' . $request->name . '! Sua conta foi registrada com sucesso.']);
+        return response()->json(['success' => 'Olá, ' . $request->name . '! Sua conta foi registrada com sucesso.']);
     }
 
     /**
@@ -64,7 +64,7 @@ class ApiUserController extends Controller
             'password' => Hash::make($request['password']),
         ]);
 
-        return response()->json(['success', 'Pronto, ' . $request->name . '. Sua conta foi alterada com sucesso.']);
+        return response()->json(['success' => 'Pronto, ' . $request->name . '. Sua conta foi alterada com sucesso.']);
     }
 
     /**
@@ -75,6 +75,10 @@ class ApiUserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $user->delete();
+
+        return response()->json(['success', 'O usuário foi removido.']);
     }
 }

@@ -17,7 +17,7 @@ class ApiProductController extends Controller
     {
         Product::create($request->all());
 
-        return response()->json(['success', 'Produto criado com sucesso!']);
+        return response()->json(['success' => 'Produto criado com sucesso!']);
     }
 
     public function show($id)
@@ -31,7 +31,7 @@ class ApiProductController extends Controller
 
         $product->update($request->all());
 
-        return response()->json(['success', 'Produto atualizado com sucesso!']);
+        return response()->json(['success' => 'Produto atualizado com sucesso!']);
     }
 
     public function destroy($id)
@@ -40,6 +40,6 @@ class ApiProductController extends Controller
 
         $product->delete();
 
-        return response()->json(['success', 'Produto removido com sucesso!']);
+        return response()->json(['success' => 'Produto removido com sucesso!']);
     }
 }

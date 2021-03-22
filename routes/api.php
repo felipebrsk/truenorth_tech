@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\ApiAuthController;
 use App\Http\Controllers\api\ApiProductController;
 use App\Http\Controllers\api\ApiUserController;
 use Illuminate\Http\Request;
@@ -16,11 +17,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::apiResources([
-    'list/products' => ApiProductController::class,
-    'list/users' => ApiUserController::class,
-]);
+Route::post('login/auth', [ApiAuthController::class, 'login']);
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware(['apiJwt'])->group(function () {
+    Route::apiResources([
+        'products' => ApiProductController::class,
+        'users' => ApiUserController::class,
+    ]);
+
+    Route::post('auth/logout', [ApiAuthController::class, 'logout']);
+    Route::post('auth/refresh', [ApiAuthController::class, 'refresh']);
+    Route::post('auth/me', [ApiAuthController::class, 'me']);
 });
