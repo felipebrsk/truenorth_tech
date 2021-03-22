@@ -56,8 +56,8 @@
                         <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0"
                             href="{{ route('home') }}">Home</a>
                         <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="{{ route('shop.index') }}">Shop</a>
-                        <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Não sei?</a>
-                        <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Não sei?</a>
+                        <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Algo</a>
+                        <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Algo</a>
                         <a class="mt-3 text-gray-600 hover:underline sm:mx-3 sm:mt-0" href="#">Sobre</a>
                     </div>
                 </nav>
