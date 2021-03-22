@@ -22,9 +22,6 @@
                 <div class="w-full h-64 md:w-1/2 lg:h-96 easyzoom">
                     <img class="h-auto w-full rounded-md object-cover max-w-lg mx-auto"
                         src="{{ asset('/images/' . $findProduct->image) }}" alt="{{$findProduct->product}}">
-                        @foreach ($multipleImages as $images)
-                            <img src="{{ asset('/images/' . $images->image) }}" alt="">
-                        @endforeach
                 </div>
                 <div class="w-full max-w-lg mx-auto mt-32 md:ml-8 md:mt-0 md:w-1/2">
                     <h3 class="text-gray-700 uppercase text-lg">{{ $findProduct->product }}</h3>

@@ -57,15 +57,13 @@ class ShopController extends Controller
     {
         $findProduct = Product::find($id);
 
-        $multipleImages = $product->load('images')->get();
-
         $similarProducts = Product::RandomSimilars()
         ->where('product', 'LIKE', $findProduct->product)
         ->orWhere('category_id', 'LIKE', $findProduct->category_id)
         ->orWhere('search_helper', 'LIKE', $findProduct->search_helper)
         ->get();
         
-        return view('products.show', compact('findProduct', 'similarProducts', 'multipleImages'));
+        return view('products.show', compact('findProduct', 'similarProducts'));
     }
 
     /**
