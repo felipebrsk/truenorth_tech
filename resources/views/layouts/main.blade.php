@@ -416,13 +416,13 @@
     </header>
     @yield('content')
     <footer class="bg-gray-800 pt-10 sm:mt-10">
-        <div class="m-auto text-gray-800 flex flex-wrap max-w-6xl">
+        <div class="m-auto flex flex-wrap max-w-6xl text-white">
             <div class="p-5 w-1/2 sm:w-4/12 md:w-3/12">
                 <div class="text-xs uppercase text-gray-400 font-medium mb-6">
                     Title of objects
                 </div>
 
-                <a href="#" class="my-3 block text-gray-300 hover:text-gray-100 text-sm font-medium duration-700">
+                <a href="#" class="my-3 block hover:text-gray-400 text-sm font-medium duration-700">
                     Text of object
                 </a>
             </div>
@@ -432,7 +432,7 @@
                     Title of objects
                 </div>
 
-                <a href="#" class="my-3 block text-gray-300 hover:text-gray-400 text-sm font-medium duration-700">
+                <a href="#" class="my-3 block hover:text-gray-400 text-sm font-medium duration-700">
                     Text of object
                 </a>
             </div>
@@ -442,26 +442,26 @@
                     Customization
                 </div>
 
-                <a href="#" class="my-3 block text-gray-300 hover:text-gray-400 text-sm font-medium duration-700">
+                <a href="#" class="my-3 block hover:text-gray-400 text-sm font-medium duration-700">
                     Text of object
                 </a>
             </div>
 
-            <div class="p-5 w-1/2 sm:w-4/12 md:w-3/12">
+            <div class="p-5 w-1/2 sm:w-4/12 md:w-3/12 text-white">
                 <div class="text-xs uppercase text-gray-400 font-medium mb-6">
                     Contate-me
                 </div>
 
                 <a href="https://github.com/felipebrsk"
-                    class="my-3 block text-gray-300 hover:text-gray-400 text-sm font-medium duration-700">
+                    class="my-3 block hover:text-gray-400 text-sm font-medium duration-700">
                     GitHub
                 </a>
                 <a href="https://twitter.com/FalidoL"
-                    class="my-3 block text-gray-300 hover:text-gray-400 text-sm font-medium duration-700">
+                    class="my-3 block hover:text-gray-400 text-sm font-medium duration-700">
                     Twitter
                 </a>
                 <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5579998677272"
-                    class="my-3 block text-gray-300 hover:text-gray-400 text-sm font-medium duration-700">
+                    class="my-3 block hover:text-gray-400 text-sm font-medium duration-700">
                     WhatsApp
                 </a>
                 <a href="https://www.linkedin.com/in/felipe-luz-oliveira/"
@@ -480,10 +480,10 @@
                 </div>
 
                 <div class="md:flex-auto md:flex-row-reverse mt-2 flex-row flex">
-                    <a href="#" class="w-6 mx-1" target="_blank">
+                    <a href="https://www.facebook.com/felipe.brsk" class="w-6 mx-1" target="_blank">
                         <i class="fab fa-facebook-f text-white"></i>
                     </a>
-                    <a href="#" class="w-6 mx-1" target="_blank">
+                    <a href="https://twitter.com/FalidoL" class="w-6 mx-1" target="_blank">
                         <i class="fab fa-twitter text-white"></i>
                     </a>
                     <a href="https://api.whatsapp.com/send?1=pt_BR&phone=5579998677272" class="w-6 mx-1"

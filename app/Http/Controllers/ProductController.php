@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
-class ProdutoController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,7 +19,7 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        $produtos = Product::paginate(4);
+        $produtos = Product::paginate(5);
 
         return view('products.index', compact('produtos'));
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\api\ApiProductController;
+use App\Http\Controllers\api\ApiUserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/list/products', ApiProductController::class);
+Route::apiResources([
+    'list/products' => ApiProductController::class,
+    'list/users' => ApiUserController::class,
+]);
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();

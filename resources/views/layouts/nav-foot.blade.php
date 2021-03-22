@@ -14,8 +14,8 @@
 
 <body>
 
-    <div x-data="{ cartOpen: false , isOpen: false }" class="bg-white" @click.away="cartOpen = false"
-        @keydown.escape.window="cartOpen = false">
+    <div x-data="{ cartOpen: false , isOpen: false }" class="bg-white"
+        @keydown.escape.window="cartOpen = false" @click.away="cartOpen = !cartOpen">
         <header>
             <div class="container mx-auto px-6 py-3">
                 <div class="flex items-center justify-between">
@@ -103,7 +103,7 @@
                                 <div class="flex items-center mt-2">
                                     <form action="{{ route('cart.remove', $products->rowId) }}" method="POST">
                                         @csrf
-                                        {{ method_field('PATCH') }}
+                                        @method('PATCH')
                                         <button class="text-gray-500 focus:outline-none focus:text-gray-600">
                                             <svg class="h-5 w-5" fill="none" stroke-linecap="round"
                                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -116,7 +116,7 @@
                                     <span class="text-gray-700 mx-2">{{ $products->qty }}</span>
                                     <form action="{{ route('cart.update', $products->rowId) }}" method="POST">
                                         @csrf
-                                        {{ method_field('PATCH') }}
+                                        @method('PATCH')
                                         <button class="text-gray-500 focus:outline-none focus:text-gray-600">
                                             <svg class="h-5 w-5" fill="none" stroke-linecap="round"
                                                 stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24"
@@ -133,7 +133,7 @@
                     </div>
                     <form action="{{ route('cart.destroy', $products->rowId) }}" method="post">
                         @csrf
-                        {{ method_field('DELETE') }}
+                        @method('DELETE')
                         <button class="text-gray-600 focus:outline-none inline-flex">
                             <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round"
                                 stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
