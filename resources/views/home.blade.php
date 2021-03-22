@@ -1,11 +1,12 @@
 @extends('layouts.main')
 
 @section('content')
-<style>
-    .text-white a {
-        color: white;
-    }
-</style>
+    <style>
+        .text-white a {
+            color: white;
+        }
+
+    </style>
     <main class="my-8">
         <div class="container mx-auto px-6">
             <div class="rounded-md overflow-hidden bg-cover bg-center h-80"
@@ -90,6 +91,10 @@
                                     @csrf
                                     <div
                                         class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden transform hover:scale-105">
+                                        @if ($product->new === 1)
+                                            <img src="{{ asset('/images/lançamento_faixa.png') }}" alt="lançamento"
+                                                class="absolute">
+                                        @endif
                                         <div class="flex items-end justify-end h-56 w-full bg-cover"
                                             style="background-image: url('{{ asset('/images/' . $product->image) }}')">
                                             <input type="hidden" name="id" value="{{ $product->id }}">
@@ -126,6 +131,10 @@
                             @csrf
                             <div
                                 class="w-full max-w-sm mx-auto rounded-md shadow-md overflow-hidden transform hover:scale-105">
+                                @if ($product->new === 1)
+                                    <img src="{{ asset('/images/lançamento_faixa.png') }}" alt="lançamento"
+                                        class="absolute">
+                                @endif
                                 <div class="flex items-end justify-end h-56 w-full bg-cover"
                                     style="background-image: url('{{ asset('/images/' . $product->image) }}')">
                                     <input type="hidden" name="id" value="{{ $product->id }}">
